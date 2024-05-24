@@ -28,14 +28,13 @@
 
 <script>
     var map = L.map('map').setView([0.6906468098935103, 122.32459030311314], 11 );
-
-    map.dragging.disable();
+    
+   
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
     map.boxZoom.disable();
     map.keyboard.disable();
-    // map.removeControl(map.zoomControl);
+    
           
     var LayerKita = new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
         maxZoom: 40,
@@ -47,8 +46,7 @@
 
     var myStyle = {
         "color": "#ff0000",
-        "weight":2,
-        "opacity": 5
+      
     };
 
     var myStyle2 = {
@@ -117,8 +115,6 @@
         "opacity": 0
     };
 
-
-
 function popUp(f,l){
     var out = [];
     if (f.properties){
@@ -178,6 +174,11 @@ var baseLayers = [
 ];
 
 var overLayers = [
+
+    {
+		name: "Batas Wilayah Administrasi Kabupaten",
+		layer: new L.GeoJSON.AJAX(["shp_administrasi.geojson"],{onEachFeature:popUp,style:myStyle12 ,pointToLayer: featureToMarker}).addTo(map)
+	},
    
 	{
 		group: "Peta Wilayah Administrasi Kecamatan",
